@@ -12,8 +12,11 @@ public class Address {
     public static final String MESSAGE_ADDRESS_CONSTRAINTS = "Person addresses can be in any format";
     public static final String ADDRESS_VALIDATION_REGEX = ".+";
 
-    public final String value;
-    private boolean isPrivate;
+      private Block block;
+      private Street street;
+      private Unit unit;
+      private PostalCode postalCode;
+      private boolean isPrivate;
 
     /**
      * Validates given address.
@@ -26,7 +29,12 @@ public class Address {
         if (!isValidAddress(trimmedAddress)) {
             throw new IllegalValueException(MESSAGE_ADDRESS_CONSTRAINTS);
         }
-        this.value = trimmedAddress;
+        
+        String[] addressValues = address.split(",");
+        this.block = new Block(addressValues[0]);
+        this.street = new Street(addressValues[1]);
+        this.unit = new Unit(addressValues[2]);
+        this.postalCode = new PostalCode(addressValues[3]);
     }
 
     /**
@@ -35,22 +43,28 @@ public class Address {
     public static boolean isValidAddress(String test) {
         return test.matches(ADDRESS_VALIDATION_REGEX);
     }
+    
+    public String getAddress(){
+    	String address = new String();
+    	address = block.toString() + ", " + street.toString() + ", " + unit.toString() + ", " + street.toString() + ", " + postalCode.toString();
+    	return address;
+    }
 
     @Override
     public String toString() {
-        return value;
+        return this.getAddress();
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Address // instanceof handles nulls
-                && this.value.equals(((Address) other).value)); // state check
+                && this.getAddress().equals(((Address) other).getAddress())); // state check
     }
 
     @Override
     public int hashCode() {
-        return value.hashCode();
+        return this.getAddress().hashCode();
     }
 
     public boolean isPrivate() {
