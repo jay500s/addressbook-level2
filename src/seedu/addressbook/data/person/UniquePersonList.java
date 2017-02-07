@@ -108,6 +108,7 @@ public class UniquePersonList implements Iterable<Person> {
      */
     public void remove(ReadOnlyPerson toRemove) throws PersonNotFoundException {
         final boolean personFoundAndDeleted = internalList.remove(toRemove);
+        Person.nextSequenceNumber--;
         if (!personFoundAndDeleted) {
             throw new PersonNotFoundException();
         }
