@@ -27,4 +27,8 @@ public class HelpCommand extends Command {
                 + "\n" + ExitCommand.MESSAGE_USAGE
         );
     }
+    
+    public boolean isMutating(){
+    	return false;
+    }
 }

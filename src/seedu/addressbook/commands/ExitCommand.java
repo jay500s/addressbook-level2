@@ -19,4 +19,8 @@ public class ExitCommand extends Command {
     public static boolean isExit(Command command) {
         return command instanceof ExitCommand; // instanceof returns false if it is null
     }
+    
+    public boolean isMutating(){
+    	return false;
+    }
 }
