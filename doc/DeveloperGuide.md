@@ -51,3 +51,14 @@
 * Problem: Test fails during the very first time.<br>
   Solution: The output of the very first test run could be slightly different because the program
   creates a new storage file. Tests should pass from the 2nd run onwards.
+  
+### Renaming an existing tag
+
+* Essentially want to refactor the 'friend' tag into a 'buddy' tag
+* In order to do this, find one reference to the friend tag, highlight it, then use 'Ctrl + Shift + G' to open up all references to object then change it to 'buddy' instead of 'friend'
+
+### Non Functional Requirements
+
+* The address book should store up to at least 2000 contacts
+* The security level should be very good so others cannot hack into an address book
+* The response time for retrieving all contacts should be less than 10ms  
