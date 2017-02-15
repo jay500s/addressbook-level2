@@ -52,6 +52,10 @@
   Solution: The output of the very first test run could be slightly different because the program
   creates a new storage file. Tests should pass from the 2nd run onwards.
   
+### User Story 
+* As a user, I would like to be able to edit an existing contact
+* As a user, I would like to add multiple numbers for the same contact 
+
 ### Renaming an existing tag
 
 * Essentially want to refactor the 'friend' tag into a 'buddy' tag
